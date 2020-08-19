@@ -21,11 +21,11 @@ public:
 	void draw_anim();
 	void update(float);
 	void load_element(const char* fileName);
-	Shaders anim_shader;
 	model model;
 	double anim_cursor;
 	int curent_frame_indx;
 	int frames_count;
 	float speed;
+
 	vector<vector<float>> frames;
 };

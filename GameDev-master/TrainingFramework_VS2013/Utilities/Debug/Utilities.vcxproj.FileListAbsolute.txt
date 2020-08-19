@@ -1,2 +1,4 @@
 C:\Users\Admin\Desktop\GameLoft\Gameloftc-master\TrainingFramework_VS2013\Debug\Utilities.pdb
 C:\Users\Admin\Desktop\GameLoft\Gameloftc-master\TrainingFramework_VS2013\Utilities\Debug\Utilities.pdb
+C:\Users\Admin\Documents\GitHub\gameDev2\GameDev-master\TrainingFramework_VS2013\Debug\Utilities.pdb
+C:\Users\Admin\Documents\GitHub\gameDev2\GameDev-master\TrainingFramework_VS2013\Utilities\Debug\Utilities.pdb

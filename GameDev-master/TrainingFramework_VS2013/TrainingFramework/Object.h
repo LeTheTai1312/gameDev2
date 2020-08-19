@@ -11,8 +11,10 @@ class Objects
 {
 public:
 
-	Matrix scaleMatrix, rotationMatrix, translationMatrix, Rx, Ry, Rz, scale_view, rotation_view, translation_view,
-		Rx_v, Ry_v, Rz_v;
+	Matrix scaleMatrix;
+	Matrix rotationMatrix;
+	Matrix translationMatrix;
+	Matrix Rx, Ry, Rz;
 	Matrix wMatrix, vMatrix, pMatrix, wvpMatrix;
 	float sw, sxw, syw, szw, rxw, ryw, rzw, txw, tyw, tzw;
 	void set_matrix(Matrix v);
