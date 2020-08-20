@@ -21,7 +21,7 @@ public:
 	void draw_anim();
 	void update(float);
 	void load_element(const char* fileName);
-	model model;
+	model* model;
 	double anim_cursor;
 	int curent_frame_indx;
 	int frames_count;

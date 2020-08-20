@@ -20,7 +20,7 @@ public:
 	void set_matrix(Matrix v);
 	void set_world(float s, float rx, float ry, float rz, float tx, float ty, float tz);
 	void set_wvp(Matrix v);
-	void draw(Matrix matrix_VP);
+	void draw();
 	//void draw2D(Matrix Vp);
 
 	void update_world(float s, float x, float y, float z, float tx, float ty, float tz);

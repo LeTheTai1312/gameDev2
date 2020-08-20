@@ -73,6 +73,11 @@ void Game::Update(float deltaTime) {
 	}
 }
 
+void Game::Update_animation(float deltaTime)
+{
+	Singleton<SceneManager>::GetInstance()->update_animation(deltaTime);
+}
+
 void Game::Key( unsigned char key, bool bIsPressed){
 	if (key == 0x51 && bIsPressed && !MoveF) MoveF = true;
 	if (key == 0x45 && bIsPressed && !MoveB) MoveB = true;
@@ -90,3 +95,4 @@ void Game::Draw(){
 
 	Singleton<SceneManager>::GetInstance()->draw();
 }
+

@@ -202,9 +202,6 @@
     <Image Include="..\Resources\Textures\Woman2.tga">
       <Filter>Resources\file</Filter>
     </Image>
-    <Image Include="..\Resources\Textures\spritesheet.tga">
-      <Filter>Resources\file</Filter>
-    </Image>
     <Image Include="..\Resources\Textures\spritesheet.png">
       <Filter>Resources\file</Filter>
     </Image>

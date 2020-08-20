@@ -161,7 +161,6 @@
     <Image Include="..\Resources\Textures\left.tga" />
     <Image Include="..\Resources\Textures\right.tga" />
     <Image Include="..\Resources\Textures\spritesheet.png" />
-    <Image Include="..\Resources\Textures\spritesheet.tga" />
     <Image Include="..\Resources\Textures\Terrain_blendmap_1.tga" />
     <Image Include="..\Resources\Textures\Terrain_blendmap_2.tga" />
     <Image Include="..\Resources\Textures\top.tga" />

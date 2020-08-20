@@ -47,6 +47,8 @@ void model::init(char* l) {
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int)*num_indice, indices, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	//texture.loadTexture(m);
 
 	//return myShaders.Init(vs, fs);

@@ -16,34 +16,12 @@ FILE ../Resources/Models/Goliath.nfg
 ID 7
 FILE ../Resources/Models/animation.nfg
 
-#2D Textures: 9
+#2D Textures: 2
 ID 0
-FILE ../Resources/Textures/Woman1.tga
+FILE ../Resources/Textures/run.tga
 TILING CLAMP
 ID 1
-FILE ../Resources/Textures/Woman2.tga
-TILING CLAMP
-ID 2
-FILE ../Resources/Textures/Witch.tga
-TILING CLAMP
-ID 3
-FILE ../Resources/Textures/Terrain_blendmap_2.tga
-TILING CLAMP
-ID 4
-FILE ../Resources/Textures/Terrain_blendmap_1.tga
-TILING CLAMP
-ID 5
-FILE ../Resources/Textures/Grass.tga
-TILING CLAMP
-ID 6
-FILE ../Resources/Textures/Dirt.tga
-TILING CLAMP
-ID 7
-FILE ../Resources/Textures/Rock.tga
-TILING CLAMP
-ID 8
-FILE ../Resources/Textures/spritesheet.tga
-TILING CLAMP
+FILE ../Resources/Textures/Woman1.tga
 
 #Cube Textures: 6
 ID 0

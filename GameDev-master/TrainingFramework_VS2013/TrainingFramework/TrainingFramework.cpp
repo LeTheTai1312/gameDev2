@@ -50,7 +50,7 @@ void Draw ( ESContext *esContext)
 
 void Update ( ESContext *esContext, float deltaTime)
 {
-	//Singleton<Sprite2D>::GetInstance()->Update(deltaTime);
+	//Singleton<Game>::GetInstance()->Update_animation(deltaTime);
 	//Singleton<Game>::GetInstance()->Draw();
 	Singleton<Game>::GetInstance()->Update(deltaTime);
 }
@@ -69,8 +69,8 @@ void CleanUp()
 	for (int i = 0; i < Singleton<ResourceManager>::GetInstance()->modelsNum; i++) {
 		Singleton<ResourceManager>::GetInstance()->free();
 	}
-	glDeleteBuffers(1, &Singleton<Sprite2D>::GetInstance()->anim->model.vboId);
-	glDeleteBuffers(1, &Singleton<Sprite2D>::GetInstance()->anim->model.iboId);
+	//glDeleteBuffers(1, &Singleton<Sprite2D>::GetInstance()->anim->model.vboId);
+	//glDeleteBuffers(1, &Singleton<Sprite2D>::GetInstance()->anim->model.iboId);
 }
 
 int _tmain(int argc, _TCHAR* argv[])

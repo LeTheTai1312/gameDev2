@@ -41,9 +41,9 @@ void Objects::set_wvp(Matrix v) {
 	wvpMatrix = wMatrix * v;
 }
 
-void Objects::draw(Matrix matrix_VP)
+void Objects::draw()
 {
-	set_matrix(matrix_VP);
+	set_matrix(Singleton<Camera>::GetInstance()->camera_VP);
 	glUseProgram(shaders.program);
 	glUniformMatrix4fv(shaders.WVP, 1, GL_FALSE, &wvpMatrix.m[0][0]);
 

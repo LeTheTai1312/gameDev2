@@ -14,6 +14,7 @@ public:
 	~Game(void);
 	static Game* GetInstance();
 	void Update(float deltaTime);
+	void Update_animation(float);
 	void Key( unsigned char key, bool bIsPressed);
 	void Draw();
 
