@@ -12,7 +12,8 @@ public:
 	
 	GLint width, height, bpp;
 	int w, h, nrChanels;
-	GLuint textureID, cubeTextureID;
+	GLuint cubeTextureID;
+	unsigned int textureID;
 	std::vector <char*> cubePixels;
 	/*{
 		"../Resources/Textures/right.tga",
@@ -22,7 +23,7 @@ public:
 		"../Resources/Textures/front.tga",
 		"../Resources/Textures/back.tga"
 	};*/
-	void loadTexture(char* l);
+	//void loadTexture(char* l);
 	void loadTexture2D(char* l);
 	void loadCubeTexture();
 	void loadImageData(char* l, int i);

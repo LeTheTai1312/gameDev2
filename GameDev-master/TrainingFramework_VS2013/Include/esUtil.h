@@ -82,8 +82,12 @@ typedef struct
 
    /// Callbacks
    void (ESCALLBACK *drawFunc) ( void* );
-   void (ESCALLBACK *keyFunc) ( void*, unsigned char, int, int );
+   void (ESCALLBACK *keyDownFunc) ( void*, unsigned char, int, int );
+   void (ESCALLBACK *keyUpFunc) ( void*, unsigned char, int, int );
    void (ESCALLBACK *updateFunc) ( void*, float deltaTime );
+   void (ESCALLBACK *mouseDownFunc) ( void*, int, int );
+   void (ESCALLBACK *mouseUpFunc) ( void*, int, int );
+   void (ESCALLBACK *mouseMoveFunc) ( void*, int, int );
 } ESContext;
 
 
@@ -138,7 +142,9 @@ void ESUTIL_API esRegisterUpdateFunc ( ESContext *esContext, void (ESCALLBACK *u
 /// \param esContext Application context
 /// \param keyFunc Key callback function for application processing of keyboard input
 //
-void ESUTIL_API esRegisterKeyFunc ( ESContext *esContext, 
+void ESUTIL_API esRegisterKeyDownFunc ( ESContext *esContext, 
+                                    void (ESCALLBACK *drawFunc) ( ESContext*, unsigned char, int, int ) );
+void ESUTIL_API esRegisterKeyUpFunc ( ESContext *esContext, 
                                     void (ESCALLBACK *drawFunc) ( ESContext*, unsigned char, int, int ) );
 //
 /// \brief Log a message to the debug output for the platform
@@ -266,6 +272,16 @@ void ESUTIL_API esMatrixMultiply(ESMatrix *result, ESMatrix *srcA, ESMatrix *src
 //// \param result returns identity matrix
 //
 void ESUTIL_API esMatrixLoadIdentity(ESMatrix *result);
+
+void ESUTIL_API esRegisterMouseDownFunc ( ESContext *esContext,
+                                    void (ESCALLBACK *mouseDownFunc) (ESContext*, int, int ) );
+
+void ESUTIL_API esRegisterMouseUpFunc ( ESContext *esContext,
+                                    void (ESCALLBACK *mouseUpFunc) (ESContext*, int, int ) );
+
+
+void ESUTIL_API esRegisterMouseMoveFunc ( ESContext *esContext,
+                                    void (ESCALLBACK *mouseMoveFunc) (ESContext*, int, int ) );
 
 #ifdef __cplusplus
 }

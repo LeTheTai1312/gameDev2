@@ -46,10 +46,40 @@ LRESULT WINAPI ESWindowProc ( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 				  esContext->keyFunc ( esContext, (unsigned char) wParam, false );
 		  }
 		  break;
-         
+      case WM_MOUSEMOVE:
+          if (wParam & MK_LBUTTON)
+          {
+              POINTS      point;
+              ESContext* esContext = (ESContext*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
+
+              point = MAKEPOINTS(lParam);
+              if (esContext && esContext->mouseMoveFunc)
+                  esContext->mouseMoveFunc(esContext, (int)point.x, (int)point.y);
+          }
+          break;
+      case WM_LBUTTONDOWN:
+          if (wParam & MK_LBUTTON)
+          {
+              POINTS      point;
+              ESContext* esContext = (ESContext*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
+
+              point = MAKEPOINTS(lParam);
+              if (esContext && esContext->mouseDownFunc)
+                  esContext->mouseDownFunc(esContext, (int)point.x, (int)point.y);
+          }
+          break;
+      case WM_LBUTTONUP: {
+          POINTS      point;
+          ESContext* esContext = (ESContext*)(LONG_PTR)GetWindowLongPtr(hWnd, GWL_USERDATA);
+
+          point = MAKEPOINTS(lParam);
+          if (esContext && esContext->mouseUpFunc)
+              esContext->mouseUpFunc(esContext, (int)point.x, (int)point.y);
+          break; }
       default: 
          lRet = DefWindowProc (hWnd, uMsg, wParam, lParam); 
          break; 
+     
    } 
 
    return lRet; 
@@ -145,3 +175,4 @@ void WinLoop ( ESContext *esContext )
          esContext->updateFunc ( esContext, deltaTime );
    }
 }
+

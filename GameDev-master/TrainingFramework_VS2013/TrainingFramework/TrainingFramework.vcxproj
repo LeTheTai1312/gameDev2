@@ -53,7 +53,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Admin\Documents\GitHub\GameDev\TrainingFramework_VS2013\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -95,10 +95,13 @@
   <ItemGroup>
     <ClCompile Include="Animation2D.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cricle.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Matran.cpp" />
     <ClCompile Include="model.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Physic.cpp" />
+    <ClCompile Include="Rectangl.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Sprite2D.cpp" />
@@ -113,11 +116,14 @@
   <ItemGroup>
     <ClInclude Include="Animation2D.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cricle.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Matran.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Physic.h" />
+    <ClInclude Include="Rectangl.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Shaders.h" />
@@ -131,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Resources\Models\animation.nfg" />
+    <None Include="..\Resources\Models\background.nfg" />
     <None Include="..\Resources\Models\SkyBox.nfg" />
     <None Include="..\Resources\Models\sprite.nfg" />
     <None Include="..\Resources\Models\Terrain.nfg" />
@@ -157,6 +164,7 @@
     <Image Include="..\Resources\Textures\back.tga" />
     <Image Include="..\Resources\Textures\bottom.tga" />
     <Image Include="..\Resources\Textures\front.tga" />
+    <Image Include="..\Resources\Textures\f_idle_L.png" />
     <Image Include="..\Resources\Textures\Grass.tga" />
     <Image Include="..\Resources\Textures\left.tga" />
     <Image Include="..\Resources\Textures\right.tga" />

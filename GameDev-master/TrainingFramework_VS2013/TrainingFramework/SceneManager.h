@@ -20,6 +20,7 @@ public:
 	void loadObjects(char *l);
 	void draw();
 	void update_animation(float);
+	void mouse_animation_move(int x, int y);
 	void free();
 	SceneManager();
 	~SceneManager();

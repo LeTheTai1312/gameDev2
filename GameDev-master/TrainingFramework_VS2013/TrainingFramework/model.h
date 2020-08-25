@@ -22,7 +22,7 @@ public:
 
 
 
-
+	model(const model&);
 	model();
 	~model();
 

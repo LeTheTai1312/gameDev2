@@ -48,6 +48,9 @@ public:
    void (ESCALLBACK *drawFunc) ( ESContext * );
    void (ESCALLBACK *keyFunc) ( ESContext *, unsigned char, bool );
    void (ESCALLBACK *updateFunc) ( ESContext *, float deltaTime );
+   void (ESCALLBACK* mouseDownFunc) (ESContext*, int, int);
+   void (ESCALLBACK* mouseUpFunc) (ESContext*, int, int);
+   void (ESCALLBACK* mouseMoveFunc) (ESContext*, int, int);
 };
 
 
@@ -126,6 +129,15 @@ GLuint ESUTIL_API esLoadShader ( GLenum type, char * filename);
 //
 GLuint ESUTIL_API esLoadProgram ( GLuint vertexShader, GLuint fragmentShader );
 
+void ESUTIL_API esRegisterMouseDownFunc(ESContext* esContext,
+    void (ESCALLBACK* mouseDownFunc) (ESContext*, int, int));
+
+void ESUTIL_API esRegisterMouseUpFunc(ESContext* esContext,
+    void (ESCALLBACK* mouseUpFunc) (ESContext*, int, int));
+
+
+void ESUTIL_API esRegisterMouseMoveFunc(ESContext* esContext,
+    void (ESCALLBACK* mouseMoveFunc) (ESContext*, int, int));
 
 
 

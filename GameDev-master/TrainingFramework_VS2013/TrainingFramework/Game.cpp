@@ -78,6 +78,11 @@ void Game::Update_animation(float deltaTime)
 	Singleton<SceneManager>::GetInstance()->update_animation(deltaTime);
 }
 
+void Game::mouse_animation_move(int x, int y)
+{
+	Singleton<SceneManager>::GetInstance()->mouse_animation_move(x, y);
+}
+
 void Game::Key( unsigned char key, bool bIsPressed){
 	if (key == 0x51 && bIsPressed && !MoveF) MoveF = true;
 	if (key == 0x45 && bIsPressed && !MoveB) MoveB = true;

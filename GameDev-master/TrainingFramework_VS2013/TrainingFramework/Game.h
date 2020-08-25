@@ -15,6 +15,7 @@ public:
 	static Game* GetInstance();
 	void Update(float deltaTime);
 	void Update_animation(float);
+	void mouse_animation_move(int x, int y);
 	void Key( unsigned char key, bool bIsPressed);
 	void Draw();
 

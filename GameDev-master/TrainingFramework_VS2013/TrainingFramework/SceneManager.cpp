@@ -24,6 +24,7 @@ SceneManager::~SceneManager()
 
 void SceneManager::loadObjects(char *l) {
 	int ob, objectID, modelID, textureID, cubeTextureID, shaderID, textureNum, cubeTextureNum;
+	float anim_speed;
 	int animID;
 	FILE *file;
 	file = fopen(l, "r");
@@ -68,14 +69,19 @@ void SceneManager::loadObjects(char *l) {
 		anim[animID].models = modelID;
 		anim[animID].load_element("../Resources/sprites (1).txt");
 
+		fscanf(file, "FRAME %d\n", &anim[animID].frameNum);
+		anim[animID].frame = Singleton<ResourceManager>::GetInstance()->frames[anim[animID].frameNum];
+
 		fscanf(file, "TEXTURES %d\n", &textureNum);
 		anim[animID].texture = new int[textureNum];
-		//anim[animID].textureNum = textureNum;
+		anim[animID].textureNum = textureNum;
 		for (int j = 0; j < textureNum; j++) {
 			fscanf(file, "TEXTURE %d\n", &textureID);
 			anim[animID].texture[j] = textureID;
 		}
+		anim[animID].curent_texture = anim[animID].texture[0];
 		anim[animID].play();
+		//anim[animID].load_element("../Resources/sprites (1).txt");
 
 		fscanf(file, "CUBETEXTURES %d\n", &cubeTextureNum);
 		//anim[animID].cubeTexture = new int[cubeTextureNum];
@@ -89,6 +95,7 @@ void SceneManager::loadObjects(char *l) {
 		anim[animID].shaders = Singleton<ResourceManager>::GetInstance()->shader[shaderID];
 		int a = anim[animID].textureNum;
 		anim[animID].shaders.m_texture = new int[a];
+		fscanf(file, "SPEED %f\n", &anim[animID].speed);
 		fscanf(file, "POSITION %f, %f, %f\n", &anim[animID].txw, &anim[animID].tyw, &anim[animID].tzw);
 		fscanf(file, "ROTATION %f, %f, %f\n", &anim[animID].rxw, &anim[animID].ryw, &anim[animID].rzw);
 		fscanf(file, "SCALE %f, %f, %f\n", &anim[animID].sxw, &anim[animID].syw, &anim[animID].szw);
@@ -101,19 +108,25 @@ void SceneManager::loadObjects(char *l) {
 }
 
 void SceneManager::draw() {
-	//Singleton<Camera>::GetInstance()->set_CamVP();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	for (int i = 0; i < objectNum; i++) {
-		objects[i].draw();
-	}
+	Singleton<Camera>::GetInstance()->set_CamVP();
 	for (int i = 0; i < animNum; i++) {
 		anim[i].draw_anim();
+	}
+	for (int i = 0; i < objectNum; i++) {
+		objects[i].draw();
 	}
 }
 
 void SceneManager::update_animation(float deltaTime) {
 	for (int i = 0; i < animNum; i++) {
 		anim[i].update(deltaTime);
+	}
+}
+
+void SceneManager::mouse_animation_move(int x, int y)
+{
+	for (int i = 0; i < animNum; i++) {
+		anim[0].update_animation_move_player(x, y);
 	}
 }
 

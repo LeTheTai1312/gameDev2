@@ -1,4 +1,4 @@
-#Models: 8
+#Models: 9
 ID 0
 FILE ../Resources/Models/Woman1.nfg
 ID 1
@@ -15,13 +15,31 @@ ID 6
 FILE ../Resources/Models/Goliath.nfg
 ID 7
 FILE ../Resources/Models/animation.nfg
+ID 8
+FILE ../Resources/Models/background.nfg
 
-#2D Textures: 2
+#2D Textures: 7
 ID 0
-FILE ../Resources/Textures/run.tga
+FILE ../Resources/Textures/f_idle_R.png
 TILING CLAMP
 ID 1
-FILE ../Resources/Textures/Woman1.tga
+FILE ../Resources/Textures/f_idle_L.png
+TILING CLAMP
+ID 2
+FILE ../Resources/Textures/f_rotate_1.png
+TILING CLAMP
+ID 3
+FILE ../Resources/Textures/f_rotate_2.png
+TILING CLAMP
+ID 4
+FILE ../Resources/Textures/f2_idle_R.png
+TILING CLAMP
+ID 5
+FILE ../Resources/Textures/f2_idle_L.png
+TILING CLAMP
+ID 6
+FILE ../Resources/Textures/bg1.png
+TILING CLAMP
 
 #Cube Textures: 6
 ID 0

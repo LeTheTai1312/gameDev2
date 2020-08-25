@@ -17,5 +17,5 @@ varying vec4 v_pos;
 
 void main(void)
 {
-	gl_FragColor = textureCube(u_samplerCubeMap, v_pos.xyz);
+	gl_FragColor =  textureCube(u_samplerCubeMap, v_pos.xyz);
 }

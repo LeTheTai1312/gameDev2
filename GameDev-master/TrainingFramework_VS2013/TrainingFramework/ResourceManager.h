@@ -21,8 +21,10 @@ public:
 	Texture* TD_Textures;
 	Texture* cube_Textures;
 	Shaders* shader;
+	vector<vector<float>> frames;
 
 	void loadResource(char* l);
+	void loadElementAnim(char* l);
 	void free();
 
 	ResourceManager();

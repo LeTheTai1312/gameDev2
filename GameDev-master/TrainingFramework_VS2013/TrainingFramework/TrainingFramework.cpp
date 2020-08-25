@@ -26,23 +26,23 @@ using namespace std;
 GLuint vboId, iboId, textureID, matrixID;
 Shaders myShaders;
 Matran matrix;
-//Texture texture;
-//Objects objects;
-//Camera cam;
-//ResourceManager rsm;
-//SceneManager scm;
+int a, b;
+bool Move = false;
 
 int Init ( ESContext *esContext )
 {
-	glClearColor (1.0f, 0.5f, 1.0f, 1.0f );
+	glClearColor(0.2f, 1.0f, 1.0f, 1.0f);
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	Singleton<ResourceManager>::GetInstance()->loadResource("../Resources/Resource.txt");
 	Singleton<SceneManager>::GetInstance()->loadObjects("../Resources/Scene.txt");
-	//Singleton<Sprite2D>::GetInstance()->Add_animation("../Resources/sprites (1).txt");
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	return 0;
 }
 
 void Draw ( ESContext *esContext)
 {
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	Singleton<Game>::GetInstance()->Draw();
 	//Singleton<Sprite2D>::GetInstance()->Draw();
 	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
@@ -50,14 +50,40 @@ void Draw ( ESContext *esContext)
 
 void Update ( ESContext *esContext, float deltaTime)
 {
-	//Singleton<Game>::GetInstance()->Update_animation(deltaTime);
-	//Singleton<Game>::GetInstance()->Draw();
-	Singleton<Game>::GetInstance()->Update(deltaTime);
+	if (Move) {
+		Singleton<Game>::GetInstance()->mouse_animation_move(a, b);
+		//Move = false;
+	}
+	Singleton<Game>::GetInstance()->Update_animation(deltaTime);
+	//Singleton<Game>::GetInstance()->Update(deltaTime);
 }
 
 void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 {
 	Singleton<Game>::GetInstance()->Key(key, bIsPressed);
+}
+
+void TouchActionDown(ESContext* esContext, int x, int y)
+{
+	Move = true;
+	a = x;
+	b = y;
+	//cout << x << "-" << y << endl;
+	//Singleton<Game>::GetInstance()->mouse_animation_move(x, y);
+}
+
+void TouchActionUp(ESContext* esContext, int x, int y)
+{
+	Move = false;
+}
+
+void TouchActionMove(ESContext* esContext, int x, int y)
+{
+	Move = true;
+	a = x;
+	b = y;
+	//cout << x << "-" << y << endl;
+	//Singleton<Game>::GetInstance()->mouse_animation_move(x,y);
 }
 
 void CleanUp()
@@ -87,7 +113,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	esRegisterDrawFunc ( &esContext, Draw );
 	esRegisterUpdateFunc ( &esContext, Update );
 	esRegisterKeyFunc ( &esContext, Key);
-
+	esRegisterMouseDownFunc(&esContext, TouchActionDown);
+	esRegisterMouseUpFunc(&esContext, TouchActionUp);
+	esRegisterMouseMoveFunc(&esContext, TouchActionMove);
 	esMainLoop ( &esContext );
 
 	//releasing OpenGL resources

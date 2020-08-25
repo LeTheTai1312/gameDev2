@@ -21,6 +21,7 @@ ResourceManager::~ResourceManager()
 }
 
 void ResourceManager::loadResource(char* l) {
+	loadElementAnim("../Resources/sprites (1).txt");
 	int modelNum, modelID; char modelLink[100];
 	int TDTextureNum, TDTextureID; char TDTextureLink[100];
 	int cubeTextureNum, cubeTextureID; char cubeTextureLink[100], tiling[100];
@@ -34,6 +35,7 @@ void ResourceManager::loadResource(char* l) {
 		fscanf(file, "ID %d\n", &modelID);
 		fscanf(file, "FILE %s\n", modelLink);
 		models[modelID].init(modelLink);
+		cout << "ok" << i << endl;
 	}
 	fscanf(file, "#2D Textures: %d\n", &TDTextureNum);
 	TD_Textures = new Texture[TDTextureNum];
@@ -41,7 +43,7 @@ void ResourceManager::loadResource(char* l) {
 		fscanf(file, "ID %d\n", &TDTextureID);
 		fscanf(file, "FILE %s\n", TDTextureLink);
 		fscanf(file, "TILING %s\n", tiling);
-		TD_Textures[TDTextureID].loadTexture(TDTextureLink);
+		TD_Textures[TDTextureID].loadTexture2D(TDTextureLink);
 		tilingTD[TDTextureID] = tiling;
 	}
 	fscanf(file, "#Cube Textures: %d\n", &cubeTextureNum);
@@ -78,6 +80,26 @@ void ResourceManager::loadResource(char* l) {
 		memcpy(shader[shaderID].vs, shaderVSLink, 100);
 		shader[shaderID].Init(shaderVSLink, shaderFSLink);
 		//cout << shader[shaderID].fs;
+	}
+	fclose(file);
+}
+
+void ResourceManager::loadElementAnim(char* l)
+{
+	int index, num;
+	float a, b, c, d;
+	FILE* file;
+
+	file = fopen(l, "r");
+	fscanf(file, "Num: %d\n", &num);
+	for (int i = 0; i < num; i++) {
+		fscanf(file, "%d. %f,%f,%f,%f\n", &index, &a, &b, &c, &d);
+		vector<float> frame;
+		frame.push_back(a);
+		frame.push_back(b);
+		frame.push_back(c);
+		frame.push_back(d);
+		frames.push_back(frame);
 	}
 	fclose(file);
 }
