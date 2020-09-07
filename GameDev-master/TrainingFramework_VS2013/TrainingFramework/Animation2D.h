@@ -7,9 +7,9 @@
 #include "Camera.h"
 #include "Singleton.h"
 #include "ResourceManager.h"
-#include "SceneManager.h"
+//#include "SceneManager.h"
 #include "Rectangl.h"
-#include"Cricle.h"
+#include "Cricle.h"
 #include <vector>
 
 class Animation2D: public Objects
@@ -22,14 +22,14 @@ public:
 	void draw_anim();
 	void update(float);
 	void load_element(const char* fileName);
-	void update_animation_move_player(int x, int y);
-	void update_animation_move_boss(float);
+	//void update_animation_move_player(int x, int y);
+	//void update_animation_move_boss(float);
 	void turning(); // ca quay dau
-	void bite();
+	virtual void bite();
 	bool checkEvent(); //kiem tra event ca quay dau xong
 	void initShape();
 	void initCir();
-	void disapear();
+	virtual void disapear();
 	void zoom();
 	void follow();
 	void avoid();

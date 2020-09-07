@@ -18,7 +18,7 @@ FILE ../Resources/Models/animation.nfg
 ID 8
 FILE ../Resources/Models/background.nfg
 
-#2D Textures: 36
+#2D Textures: 37
 ID 0
 FILE ../Resources/Textures/bg3.png
 TILING CLAMP
@@ -126,6 +126,9 @@ FILE ../Resources/Textures/item3.png
 TILING CLAMP
 ID 35
 FILE ../Resources/Textures/item4.png
+TILING CLAMP
+ID 36
+FILE ../Resources/Textures/score.png
 TILING CLAMP
 
 

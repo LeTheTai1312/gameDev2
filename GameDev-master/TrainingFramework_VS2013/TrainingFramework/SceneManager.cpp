@@ -67,7 +67,7 @@ void SceneManager::loadObjects(char *l) {
 	anim = new Animation2D[animNum];
 	botFish = new BotFish[animNum];
 	playerFish = new PlayerFish[1];
-	for (int i = 1; i < animNum; i++) {
+	for (int i = 0; i < animNum; i++) {
 		if (i == 0) {
 			fscanf(file, "ID %d\n", &animID);
 			fscanf(file, "MODEL %d\n", &modelID);
@@ -95,7 +95,7 @@ void SceneManager::loadObjects(char *l) {
 			fscanf(file, "SHADER %d\n", &shaderID);
 
 			playerFish[animID].shaders = Singleton<ResourceManager>::GetInstance()->shader[shaderID];
-			int a = botFish[animID].textureNum;
+			int a = playerFish[animID].textureNum;
 			playerFish[animID].shaders.m_texture = new int[a];
 			fscanf(file, "SPEED %f\n", &playerFish[animID].speed);
 			fscanf(file, "SIZE %d\n", &playerFish[animID].size);
@@ -177,7 +177,7 @@ void SceneManager::loadObjects(char *l) {
 		anim[i].tzw = anim[0].tzw - (i * 0.01);
 	}*/
 	for (int i = 1; i < animNum; i++) {
-		botFish[i].tzw = botFish[0].tzw - (i * 0.01);
+		botFish[i].tzw = playerFish[0].tzw - (i * 0.01);
 	}
 }
 
@@ -185,26 +185,24 @@ void SceneManager::draw() {
 	Singleton<Camera>::GetInstance()->set_CamVP();
 	objects[0].draw();
 	for (int i = animNum - 1; i >= 0; i--) {
-		if (i = 0) playerFish[i].draw();
-		else botFish->draw();
+		if (i == 0) playerFish[i].draw_anim();
+		else botFish[i].draw_anim();
 		//anim[i].draw_anim();
 	}
-	for (int i = objectNum - 1; i >= 0; i--) {
+	for (int i = objectNum - 1; i > 0; i--) {
 		objects[i].draw();
 	}
 }
 float time = 0;
 void SceneManager::update_animation(float deltaTime) {
 	for (int i = 0; i < animNum; i++) {
-		if (i = 0) playerFish[i].update(deltaTime);
-		else botFish->update(deltaTime);
-		//anim[i].update(deltaTime);
+		if (i == 0) playerFish[i].update(deltaTime);
+		else botFish[i].update(deltaTime);
 	}
 	if (time > 0.03) {
 		time = 0;
 		for (int i = 1; i < animNum; i++) {
 			botFish[i].update_animation_move_boss(deltaTime);
-			//anim[i].update_animation_move_boss(deltaTime);
 		}
 	}
 	else {
@@ -224,9 +222,9 @@ void SceneManager::free() {
 
 bool SceneManager::checkEvent()
 {	
-	for (int i = 0; i < animNum; i++) {
+	/*for (int i = 0; i < animNum; i++) {
 		if (anim[i].checkEvent()) return true;
-	}
+	}*/
 	return false;
 }
 
@@ -239,40 +237,17 @@ bool SceneManager::checkCoRec(Rectangl rec, Circle cir)
 
 bool SceneManager::checkCoCirCir()
 {
-	/*for (int i = 0; i < animNum; i++) {
-		for (int j = 0; j < animNum; j++)
-			if (Singleton<Physic>::GetInstance()->checkCoCirCir(anim[i].cir, anim[j].cir) && i != j)
-				if (anim[i].size > anim[j].size) {
-					anim[j].signal = 4;
-				}
-				else if (anim[j].size > anim[i].size) {
-				}
-				return true;
-	}*/
 	return false;
 }
 
 bool SceneManager::checkColRecRec()
 {
-	/*for (int i = 0; i < animNum; i++) {
-		for (int j = 0; j < animNum; j++) {
-			if (Singleton<Physic>::GetInstance()->checkColRecRec(anim[i].rect, anim[j].rect) && i != j) {
-				if (anim[i].size > anim[j].size) {
-					anim[i].signal = 3;
-					anim[j].disapear_wait = 1;
-				}
-				else if (anim[j].size > anim[i].size) {
-					anim[j].signal = 3;
-					anim[i].disapear_wait = 1;
-				}
-			}
-		}
-	}*/
-
 	for (int i = 1; i < animNum; i++) {
-		if (Singleton<Physic>::GetInstance()->checkColRecRec(playerFish[i].rect, botFish[i].rect)) {
+		if (Singleton<Physic>::GetInstance()->checkColRecRec(playerFish[0].rect, botFish[i].rect)) {
 			if (playerFish[0].size > botFish[i].size) {
 				playerFish[0].signal = 3;
+				playerFish[0].scoreScene(i % 3);
+				//botFish[i].scoreScene(i % 3);
 				botFish[i].disapear_wait = 1;
 			}
 			else if (playerFish[0].size < botFish[i].size) {
@@ -285,7 +260,7 @@ bool SceneManager::checkColRecRec()
 	for (int i = 1; i < animNum; i++) {
 		for (int j = 1; j < animNum; j++) {
 			if (Singleton<Physic>::GetInstance()->checkColRecRec(botFish[i].rect, botFish[j].rect) && i != j) {
-				if (botFish[i].size > anim[j].size) {
+				if (botFish[i].size > botFish[j].size) {
 					botFish[i].signal = 3;
 					botFish[j].disapear_wait = 1;
 				}
