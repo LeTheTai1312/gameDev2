@@ -18,6 +18,7 @@ public:
 	void mouse_animation_move(int x, int y);
 	void Key( unsigned char key, bool bIsPressed);
 	void Draw();
+	bool checkEvent();
 
 private:
 	static Game* s_Instance;

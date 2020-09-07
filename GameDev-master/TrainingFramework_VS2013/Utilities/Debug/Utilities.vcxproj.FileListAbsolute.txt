@@ -4,5 +4,3 @@ D:\Documents\GitHub\GameDev\TrainingFramework_VS2013\Debug\Utilities.pdb
 D:\Documents\GitHub\GameDev\TrainingFramework_VS2013\Utilities\Debug\Utilities.pdb
 C:\Users\Admin\Desktop\GameDev-da71e4b11d06993f19c52c067fa89ea1ca5d4d72\TrainingFramework_VS2013\Debug\Utilities.pdb
 C:\Users\Admin\Desktop\GameDev-da71e4b11d06993f19c52c067fa89ea1ca5d4d72\TrainingFramework_VS2013\Utilities\Debug\Utilities.pdb
-C:\Users\Admin\Desktop\GameDev-master\TrainingFramework_VS2013\Debug\Utilities.pdb
-C:\Users\Admin\Desktop\GameDev-master\TrainingFramework_VS2013\Utilities\Debug\Utilities.pdb

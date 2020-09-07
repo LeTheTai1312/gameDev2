@@ -20,6 +20,7 @@
 #include "Animation2D.h"
 #include <conio.h>
 #include <iostream>
+#include <time.h>
 
 
 using namespace std;
@@ -27,11 +28,12 @@ GLuint vboId, iboId, textureID, matrixID;
 Shaders myShaders;
 Matran matrix;
 int a, b;
+bool s;
 bool Move = false;
 
 int Init ( ESContext *esContext )
 {
-	glClearColor(0.2f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	Singleton<ResourceManager>::GetInstance()->loadResource("../Resources/Resource.txt");
 	Singleton<SceneManager>::GetInstance()->loadObjects("../Resources/Scene.txt");
@@ -44,17 +46,15 @@ void Draw ( ESContext *esContext)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	Singleton<Game>::GetInstance()->Draw();
-	//Singleton<Sprite2D>::GetInstance()->Draw();
 	eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
 }
 
 void Update ( ESContext *esContext, float deltaTime)
-{
+{	
+	Singleton<Game>::GetInstance()->Update_animation(deltaTime);
 	if (Move) {
 		Singleton<Game>::GetInstance()->mouse_animation_move(a, b);
-		//Move = false;
 	}
-	Singleton<Game>::GetInstance()->Update_animation(deltaTime);
 	//Singleton<Game>::GetInstance()->Update(deltaTime);
 }
 
@@ -64,17 +64,16 @@ void Key ( ESContext *esContext, unsigned char key, bool bIsPressed)
 }
 
 void TouchActionDown(ESContext* esContext, int x, int y)
-{
+{	
+	cout << x << "-" << y << endl;
 	Move = true;
 	a = x;
 	b = y;
-	//cout << x << "-" << y << endl;
-	//Singleton<Game>::GetInstance()->mouse_animation_move(x, y);
 }
 
 void TouchActionUp(ESContext* esContext, int x, int y)
-{
-	Move = false;
+{	
+	//Move = false;
 }
 
 void TouchActionMove(ESContext* esContext, int x, int y)
@@ -101,6 +100,7 @@ void CleanUp()
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	srand(time(NULL));
 	ESContext esContext;
 
     esInitContext ( &esContext );

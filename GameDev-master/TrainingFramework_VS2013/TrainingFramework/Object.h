@@ -16,7 +16,7 @@ public:
 	Matrix translationMatrix;
 	Matrix Rx, Ry, Rz;
 	Matrix wMatrix, vMatrix, pMatrix, wvpMatrix;
-	float sw, sxw, syw, szw, rxw, ryw, rzw, txw, tyw, tzw;
+	float sxw, syw, szw, rxw, ryw, rzw, txw, tyw, tzw;
 	void set_matrix(Matrix v);
 	void set_world(float s, float rx, float ry, float rz, float tx, float ty, float tz);
 	void set_wvp(Matrix v);

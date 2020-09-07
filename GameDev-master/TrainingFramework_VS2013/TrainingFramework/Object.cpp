@@ -86,7 +86,7 @@ void Objects::draw()
 //}
 
 void Objects::update_world(float s, float x, float y, float z, float tx, float ty, float tz) {
-	sw += s;
+	float sw;
 	scaleMatrix.SetScale(sw);
 	rxw += x*(PI / 180);
 	ryw += y*(PI / 180);

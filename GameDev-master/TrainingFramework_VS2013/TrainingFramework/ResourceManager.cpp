@@ -35,7 +35,6 @@ void ResourceManager::loadResource(char* l) {
 		fscanf(file, "ID %d\n", &modelID);
 		fscanf(file, "FILE %s\n", modelLink);
 		models[modelID].init(modelLink);
-		cout << "ok" << i << endl;
 	}
 	fscanf(file, "#2D Textures: %d\n", &TDTextureNum);
 	TD_Textures = new Texture[TDTextureNum];
@@ -87,18 +86,21 @@ void ResourceManager::loadResource(char* l) {
 void ResourceManager::loadElementAnim(char* l)
 {
 	int index, num;
-	float a, b, c, d;
+	float a, b, c, d, e, f, g;
 	FILE* file;
 
 	file = fopen(l, "r");
 	fscanf(file, "Num: %d\n", &num);
 	for (int i = 0; i < num; i++) {
-		fscanf(file, "%d. %f,%f,%f,%f\n", &index, &a, &b, &c, &d);
+		fscanf(file, "%d. %f,%f,%f,%f,%f,%f,%f\n", &index, &a, &b, &c, &d, &e, &f, &g);
 		vector<float> frame;
 		frame.push_back(a);
 		frame.push_back(b);
 		frame.push_back(c);
 		frame.push_back(d);
+		frame.push_back(e);
+		frame.push_back(f);
+		frame.push_back(g);
 		frames.push_back(frame);
 	}
 	fclose(file);

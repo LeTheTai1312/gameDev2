@@ -40,7 +40,7 @@ void Texture::loadTexture2D(char* l)
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	unsigned char* data = stbi_load(l, &width, &height, &nrChanels, STBI_rgb_alpha);
-	cout << width << "-" << height <<"-"<< nrChanels << endl;
+	//cout << width << "-" << height <<"-"<< nrChanels << endl;
 	//cout << l << endl;;
 	if (data)
 	{

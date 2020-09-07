@@ -101,3 +101,9 @@ void Game::Draw(){
 	Singleton<SceneManager>::GetInstance()->draw();
 }
 
+bool Game::checkEvent()
+{	
+	if (Singleton<SceneManager>::GetInstance()->checkEvent()) return true;
+	return false;
+}
+

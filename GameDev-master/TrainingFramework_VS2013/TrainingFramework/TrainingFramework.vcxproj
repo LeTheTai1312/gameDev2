@@ -94,6 +94,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation2D.cpp" />
+    <ClCompile Include="BotFish.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cricle.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -101,6 +102,7 @@
     <ClCompile Include="model.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Physic.cpp" />
+    <ClCompile Include="PlayerFish.cpp" />
     <ClCompile Include="Rectangl.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -115,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation2D.h" />
+    <ClInclude Include="BotFish.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cricle.h" />
     <ClInclude Include="Game.h" />
@@ -123,6 +126,7 @@
     <ClInclude Include="model.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Physic.h" />
+    <ClInclude Include="PlayerFish.h" />
     <ClInclude Include="Rectangl.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SceneManager.h" />
